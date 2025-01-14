@@ -1,0 +1,36 @@
+#include <stdio.h>
+
+void print(int number) {
+    int binary[32]; // Array to store binary digits (max for a 32-bit integer)
+    int index = 0;  // Index to keep track of binary digits
+
+    // Handle zero input separately
+    if (number == 0) {
+        printf("0");
+        return;
+    }
+
+    // Loop to calculate binary representation
+    while (number > 0) {
+        binary[index] = number % 2; // Store the remainder (binary digit)
+        number /= 2;                // Divide the number by 2
+        index++;
+    }
+
+    // Print the binary digits in reverse order
+    for (int i = index - 1; i >= 0; i--) {
+        printf("%d", binary[i]);
+    }
+}
+
+int main() {
+    int number;
+
+    printf("Enter a number: ");
+    scanf("%d", &number);
+
+    printf("Binary representation: ");
+    print(number);
+
+    return 0;
+}
