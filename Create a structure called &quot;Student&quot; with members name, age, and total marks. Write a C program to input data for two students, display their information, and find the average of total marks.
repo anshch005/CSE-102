@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <string.h>
+
+struct Student {
+    char name[50];
+    int age;
+    float totalMarks;
+};
+void input(struct Student *student) {
+    printf("\nEnter student name: ");
+    scanf(" %[^\n]s", student->name);
+    
+    printf("Enter student age: ");
+    scanf("%d", &student->age);
+    
+    printf("Enter total marks: ");
+    scanf("%f", &student->totalMarks);
+}
+void display(struct Student student) {
+    printf("\nStudent Information:\n");
+    printf("Name: %s\n", student.name);
+    printf("Age: %d\n", student.age);
+    printf("Total Marks: %.2f\n", student.totalMarks);
+}
+
+int main() {
+    struct Student students[2];
+    float averageMarks;
+    printf("Enter data for Student 1:");
+    input(&students[0]);
+    
+    printf("\nEnter data for Student 2:");
+    input(&students[1]);
+    
+    printf("\n----- Student Details -----");
+    display(students[0]);
+    display(students[1]);
+    
+    averageMarks = (students[0].totalMarks + students[1].totalMarks) / 2;
+    printf("\nAverage marks of both students: %.2f\n", averageMarks);
+    
+    return 0;
+}
